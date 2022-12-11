@@ -1,66 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script
-      async
-      src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
-    ></script>
-    <script>
-      window.googletag = window.googletag || { cmd: [] };
-      googletag.cmd.push(function () {
-        googletag
-          .defineSlot(
-            "/6355419/Travel/Europe/France/Paris",
-            [300, 250],
-            "banner-ad"
-          )
-          .addService(googletag.pubads());
-        googletag
-          .defineSlot(
-            "/6355419/Travel/Europe/France/Paris",
-            [300, 250],
-            "banner-ad2"
-          )
-          .addService(googletag.pubads());
-        googletag
-          .defineSlot(
-            "/6355419/Travel/Europe/France/Paris",
-            [300, 250],
-            "banner-ad3"
-          )
-          .addService(googletag.pubads());
-        googletag.enableServices();
-      });
-    </script>
-    <script src="./script.js"></script>
+    <title>My HTML Page</title>
   </head>
   <body>
-    <div id="banner-ad" style="width: 300px; height: 250px">
-      <script>
-        googletag.cmd.push(function () {
-          googletag.display("banner-ad");
-        });
-      </script>
-    </div>
-    <div style="height: 200vh; background-color: rgb(116, 116, 160)"></div>
-    <div id="banner-ad2" style="width: 300px; height: 250px">
-      <script>
-        googletag.cmd.push(function () {
-          googletag.display("banner-ad2");
-        });
-      </script>
-    </div>
-    <div style="height: 200vh; background-color: rgb(117, 117, 194)"></div>
-    <div id="banner-ad3" style="width: 300px; height: 250px">
-      <script>
-        googletag.cmd.push(function () {
-          googletag.display("banner-ad3");
-        });
-      </script>
-    </div>
+    <div style="height: 100vh" id="div1">Div 1</div>
+    <div style="height: 100vh" id="div2">Div 2</div>
+    <div style="height: 100vh" id="div3">Div 3</div>
   </body>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>
+  <script>
+    // <!-- load the IntersectionObserver polyfill -->
+
+    // create an intersection observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        // if the element is in view, load its content
+        if (entry.isIntersecting) {
+          console.log("Inview");
+          loadContent(entry.target);
+        }
+      });
+    });
+
+    // observe the second and third div elements
+    observer.observe(document.getElementById("div2"));
+    observer.observe(document.getElementById("div3"));
+
+    function loadContent(element) {
+      console.log("loading", element);
+      // load the content of the element here...
+    }
+  </script>
 </html>
